@@ -8,6 +8,7 @@
     <script src="jspsych-6.3.1/plugins/jspsych-image-keyboard-response.js"></script>
     <script src="jspsych-6.3.1/plugins/jspsych-image-button-response.js"></script>
     <script src="jspsych-6.3.1/plugins/jspsych-preload.js"></script>
+    <script src="jspsych-6.3.1/plugins/jspsych-fullscreen.js"></script>
     <link href="jspsych-6.3.1/css/jspsych.css" rel="stylesheet" type="text/css">
   </head>
   <body></body>
@@ -15,6 +16,19 @@
 
     /* create timeline */
     var timeline = [];
+
+    var enter_fullscreen = {
+      type: 'fullscreen',
+      fullscreen_mode: true
+    }
+
+    timeline.push(enter_fullscreen);
+
+    var exit_fullscreen = {
+      type: 'fullscreen',
+      fullscreen_mode: false,
+      delay_after: 0
+    }
 
     /* preload images */
     var preload = {
@@ -55,8 +69,8 @@
 
     /* test trials */
     var test_stimuli = [
-      { stimulus: "jspsych-6.3.1/examples/img/blue.png",  correct_response: 'blue'},
-      { stimulus: "jspsych-6.3.1/examples/img/orange.png",  correct_response: 'orange'}
+      { stimulus: "jspsych-6.3.1/examples/img/blue.png",  correct_response: 0},
+      { stimulus: "jspsych-6.3.1/examples/img/orange.png",  correct_response: 1}
     ];
 
     var fixation = {
@@ -80,7 +94,8 @@
         correct_response: jsPsych.timelineVariable('correct_response')
       },
       on_finish: function(data){
-        data.correct = jsPsych.pluginAPI.compareKeys(data.response, data.correct_response);
+        //data.correct = jsPsych.pluginAPI.compareKeys(data.response, data.correct_response);
+        data.correct = data.response==data.correct_response;
       }
     }
 
@@ -95,7 +110,8 @@
     /* define debrief */
 
     var debrief_block = {
-      type: "html-keyboard-response",
+      type: "html-button-response",
+      choices: ['exit'],
       stimulus: function() {
 
         var trials = jsPsych.data.get().filter({task: 'response'});
@@ -105,11 +121,13 @@
 
         return `<p>You responded correctly on ${accuracy}% of the trials.</p>
           <p>Your average response time was ${rt}ms.</p>
-          <p>Press any key to complete the experiment. Thank you!</p>`;
+          <p>Press 'finish' to complete the experiment. Thank you!</p>`;
 
       }
     };
     timeline.push(debrief_block);
+    timeline.push(exit_fullscreen);
+
 
     /* start the experiment */
     jsPsych.init({
