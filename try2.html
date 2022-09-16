@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>My experiment</title>
+  <script src="jspsych-6.3.1/jspsych.js"></script>
+  <script src="jspsych-6.3.1/plugins/jspsych-html-keyboard-response.js"></script>
+  <script src="jspsych-6.3.1/plugins/jspsych-image-keyboard-response.js"></script>
+  <script src="jspsych-6.3.1/plugins/jspsych-preload.js"></script>
+  <link href="jspsych-6.3.1/css/jspsych.css" rel="stylesheet" type="text/css">
+</head>
+
+<body></body>
+<script>
+
+  var repo_site = "https://manayamashita.github.io/experiment-1/";
+
+  var timeline = [];
+
+  /*画像読み込み*/
+  var preload = {
+    type: 'preload',
+    images: [repo_site + 'SPT_exp1_image/flower.png',
+    repo_site + 'SPT_exp1_image/ken.png',
+    repo_site + 'SPT_exp1_image/kf0.png',
+    repo_site + 'SPT_exp1_image/kf40.png',
+    repo_site + 'SPT_exp1_image/kf80.png',
+    repo_site + 'SPT_exp1_image/kf120.png',
+    repo_site + 'SPT_exp1_image/kf160.png',
+    repo_site + 'SPT_exp1_image/Rkf40.png',
+    repo_site + 'SPT_exp1_image/Rkf80.png',
+    repo_site + 'SPT_exp1_image/Rkf120.png',
+    repo_site + 'SPT_exp1_image/Rkf160.png',
+    repo_site + 'SPT_exp1_image/fk0.png',
+    repo_site + 'SPT_exp1_image/fk40.png',
+    repo_site + 'SPT_exp1_image/fk80.png',
+    repo_site + 'SPT_exp1_image/fk120.png',
+    repo_site + 'SPT_exp1_image/fk160.png',
+    repo_site + 'SPT_exp1_image/Rfk40.png',
+    repo_site + 'SPT_exp1_image/Rfk80.png',
+    repo_site + 'SPT_exp1_image/Rfk120.png',
+    repo_site + 'SPT_exp1_image/Rfk160.png'
+    ],
+    on_success: console.log('success')
+  }
+  timeline.push(preload);
+  /*画像読み込み終わり*/
+  var swid = document.documentElement.clientWidth;
+
+  /*実験はじめ*/
+
+
+  var welcome = {
+    type: "html-keyboard-response",
+    stimulus: "何かキーを押すと実験が始まります1",
+  };
+
+  timeline.push(welcome);
+
+  /*教示はじめ*/
+  var instructions = {
+    type: "html-keyboard-response",
+    stimulus: "<p>教示</p>"
+  };
+
+  timeline.push(instructions);
+
+  /*教示おわり*/
+
+  var test_stimuli = [
+    { cue: repo_site + 'SPT_exp1_image/flower.png', target: repo_site + 'SPT_exp1_image/kf0.png', correct_response: 'j' },
+    { cue: repo_site + 'SPT_exp1_image/flower.png', target: repo_site + 'SPT_exp1_image/kf40.png', correct_response: 'j' },
+    { cue: repo_site + 'SPT_exp1_image/flower.png', target: repo_site + 'SPT_exp1_image/kf80.png', correct_response: 'j' },
+    { cue: repo_site + 'SPT_exp1_image/flower.png', target: repo_site + 'SPT_exp1_image/kf120.png', correct_response: 'j' },
+    { cue: repo_site + 'SPT_exp1_image/flower.png', target: repo_site + 'SPT_exp1_image/kf160.png', correct_response: 'j' },
+    { cue: repo_site + 'SPT_exp1_image/flower.png', target: repo_site + 'SPT_exp1_image/Rkf40.png', correct_response: 'j' },
+    { cue: repo_site + 'SPT_exp1_image/flower.png', target: repo_site + 'SPT_exp1_image/Rkf80.png', correct_response: 'j' },
+    { cue: repo_site + 'SPT_exp1_image/flower.png', target: repo_site + 'SPT_exp1_image/Rkf120.png', correct_response: 'j' },
+    { cue: repo_site + 'SPT_exp1_image/flower.png', target: repo_site + 'SPT_exp1_image/Rkf160.png', correct_response: 'j' },
+    { cue: repo_site + 'SPT_exp1_image/flower.png', target: repo_site + 'SPT_exp1_image/fk0.png', correct_response: 'f' },
+    { cue: repo_site + 'SPT_exp1_image/flower.png', target: repo_site + 'SPT_exp1_image/fk40.png', correct_response: 'f' },
+    { cue: repo_site + 'SPT_exp1_image/flower.png', target: repo_site + 'SPT_exp1_image/fk80.png', correct_response: 'f' },
+    { cue: repo_site + 'SPT_exp1_image/flower.png', target: repo_site + 'SPT_exp1_image/fk120.png', correct_response: 'f' },
+    { cue: repo_site + 'SPT_exp1_image/flower.png', target: repo_site + 'SPT_exp1_image/fk160.png', correct_response: 'f' },
+    { cue: repo_site + 'SPT_exp1_image/flower.png', target: repo_site + 'SPT_exp1_image/Rfk40.png', correct_response: 'f' },
+    { cue: repo_site + 'SPT_exp1_image/flower.png', target: repo_site + 'SPT_exp1_image/Rfk80.png', correct_response: 'f' },
+    { cue: repo_site + 'SPT_exp1_image/flower.png', target: repo_site + 'SPT_exp1_image/Rfk120.png', correct_response: 'f' },
+    { cue: repo_site + 'SPT_exp1_image/flower.png', target: repo_site + 'SPT_exp1_image/Rfk160.png', correct_response: 'f' },
+
+    { cue: repo_site + 'SPT_exp1_image/ken.png', target: repo_site + 'SPT_exp1_image/kf0.png', correct_response: 'f' },
+    { cue: repo_site + 'SPT_exp1_image/ken.png', target: repo_site + 'SPT_exp1_image/kf40.png', correct_response: 'f' },
+    { cue: repo_site + 'SPT_exp1_image/ken.png', target: repo_site + 'SPT_exp1_image/kf80.png', correct_response: 'f' },
+    { cue: repo_site + 'SPT_exp1_image/ken.png', target: repo_site + 'SPT_exp1_image/kf120.png', correct_response: 'f' },
+    { cue: repo_site + 'SPT_exp1_image/ken.png', target: repo_site + 'SPT_exp1_image/kf160.png', correct_response: 'f' },
+    { cue: repo_site + 'SPT_exp1_image/ken.png', target: repo_site + 'SPT_exp1_image/Rkf40.png', correct_response: 'f' },
+    { cue: repo_site + 'SPT_exp1_image/ken.png', target: repo_site + 'SPT_exp1_image/Rkf80.png', correct_response: 'f' },
+    { cue: repo_site + 'SPT_exp1_image/ken.png', target: repo_site + 'SPT_exp1_image/Rkf120.png', correct_response: 'f' },
+    { cue: repo_site + 'SPT_exp1_image/ken.png', target: repo_site + 'SPT_exp1_image/Rkf160.png', correct_response: 'f' },
+    { cue: repo_site + 'SPT_exp1_image/ken.png', target: repo_site + 'SPT_exp1_image/fk0.png', correct_response: 'j' },
+    { cue: repo_site + 'SPT_exp1_image/ken.png', target: repo_site + 'SPT_exp1_image/fk40.png', correct_response: 'j' },
+    { cue: repo_site + 'SPT_exp1_image/ken.png', target: repo_site + 'SPT_exp1_image/fk80.png', correct_response: 'j' },
+    { cue: repo_site + 'SPT_exp1_image/ken.png', target: repo_site + 'SPT_exp1_image/fk120.png', correct_response: 'j' },
+    { cue: repo_site + 'SPT_exp1_image/ken.png', target: repo_site + 'SPT_exp1_image/fk160.png', correct_response: 'j' },
+    { cue: repo_site + 'SPT_exp1_image/ken.png', target: repo_site + 'SPT_exp1_image/Rfk40.png', correct_response: 'j' },
+    { cue: repo_site + 'SPT_exp1_image/ken.png', target: repo_site + 'SPT_exp1_image/Rfk80.png', correct_response: 'j' },
+    { cue: repo_site + 'SPT_exp1_image/ken.png', target: repo_site + 'SPT_exp1_image/Rfk120.png', correct_response: 'j' },
+    { cue: repo_site + 'SPT_exp1_image/ken.png', target: repo_site + 'SPT_exp1_image/Rfk160.png', correct_response: 'j' },
+
+  ];
+
+  var test_rand = jsPsych.randomization.sampleWithReplacement(test_stimuli, 4);
+
+
+  /*試行開始*/
+  var ready = {
+    type: "html-keyboard-response",
+    stimulus: "<p>Ready？</p>"
+  };
+  //timeline.push(ready);
+  var br = {
+    type: "html-keyboard-response",
+    stimulus: "<p>1</p>",
+    choice: 'NO_KEYS',
+    stimulus_duration: 2000
+  };
+
+  /* timeline.push(br);*/
+
+  var test = {
+    type: "image-keyboard-response",
+    stimulus: jsPsych.timelineVariable('cue'),
+    choices: 'NO_KEYS',
+    trial_duration: 1000
+  };
+
+  //timeline.push(test);
+
+  /*timeline.push(br);*/
+
+  var test1 = {
+    type: "image-keyboard-response",
+    stimulus: jsPsych.timelineVariable('target'),
+    choices: ['f', 'j'],
+    stimulus_width: swid * 0.6,
+    data: {
+      task: 'response',
+      correct_response: jsPsych.timelineVariable('correct_response')
+    },
+  }
+  //timeline.push(test1);
+
+
+
+
+  var debrief_block = {
+    type: "html-keyboard-response",
+    trial_duration: 1000,
+
+    stimulus: function (data) {
+      var resp = jsPsych.data.getLastTrialData().filter({ task: 'response' }).select('response').values;
+      var cresp = jsPsych.data.getLastTrialData().filter({ task: 'response' }).select('correct_response').values;
+      var dt=jsPsych.data.getLastTrialData().select('correct').frequencies();
+      var last_trial_correct = jsPsych.data.get().last(1).values()[0].correct;
+      console.log(last_trial_correct);
+      if (resp == cresp)
+        console.log('true');
+      else
+        console.log('false');
+      return 0;
+
+    }
+
+  };
+  //timeline.push(debrief_block);
+
+
+  var purosdure = {
+    timeline: [ready, test, test1, debrief_block],
+    timeline_variables: test_rand,
+    randomize_order: true,
+    repetitions: 1,
+  }
+
+  timeline.push(purosdure);
+
+  /*試行終了*/
+  /* start the experiment */
+  jsPsych.init({
+    timeline: timeline,
+    on_finish: function () {
+      jsPsych.data.displayData();
+    }
+  });
+</script>
+
+</html>

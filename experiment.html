@@ -5,6 +5,7 @@
     <script src="jspsych-6.3.1/jspsych.js"></script>
     <script src="jspsych-6.3.1/plugins/jspsych-html-keyboard-response.js"></script>
     <script src="jspsych-6.3.1/plugins/jspsych-image-keyboard-response.js"></script>
+    <script src="jspsych-6.3.1/plugins/jspsych-image-button-response.js"></script>
     <script src="jspsych-6.3.1/plugins/jspsych-preload.js"></script>
     <link href="jspsych-6.3.1/css/jspsych.css" rel="stylesheet" type="text/css">
   </head>
@@ -51,8 +52,8 @@
 
     /* test trials */
     var test_stimuli = [
-      { stimulus: "jspsych-6.3.1/examples/img/blue.png",  correct_response: 'f'},
-      { stimulus: "jspsych-6.3.1/examples/img/orange.png",  correct_response: 'j'}
+      { stimulus: "jspsych-6.3.1/examples/img/blue.png",  correct_response: 'blue'},
+      { stimulus: "jspsych-6.3.1/examples/img/orange.png",  correct_response: 'orange'}
     ];
 
     var fixation = {
@@ -68,9 +69,9 @@
     }
 
     var test = {
-      type: "image-keyboard-response",
+      type: "image-button-response",
       stimulus: jsPsych.timelineVariable('stimulus'),
-      choices: ['f', 'j'],
+      choices: ['blue', 'orange'],
       data: {
         task: 'response',
         correct_response: jsPsych.timelineVariable('correct_response')
