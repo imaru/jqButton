@@ -27,7 +27,7 @@
     var welcome = {
       type: "html-button-response",
       stimulus: "Welcome to the experiment. Press any key to begin.",
-      choices:"next"
+      choices: ["next"]
     };
     timeline.push(welcome);
 
@@ -42,14 +42,14 @@
         as fast as you can.</p>
         <div style='width: 700px;'>
         <div style='float: left;'><img src='jspsych-6.3.1/examples/img/blue.png'></img>
-        <p class='small'><strong>Press the F key</strong></p></div>
+        <p class='small'><strong>Press the Blue button</strong></p></div>
         <div style='float: right;'><img src='jspsych-6.3.1/examples/img/orange.png'></img>
-        <p class='small'><strong>Press the J key</strong></p></div>
+        <p class='small'><strong>Press the Orange button</strong></p></div>
         </div>
         <p>Press nect button.</p>
       `,
       post_trial_gap: 2000,
-      choises:"next"
+      choices: ["next"]
     };
     timeline.push(instructions);
 
